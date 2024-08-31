@@ -5,19 +5,23 @@ using namespace std;
 string numero_string(int numero){
 
     string num_strin ="";
+
     string aux_num[] = {"diez","once","doce","trece","catorce","quince","dieciseis","diesisiete","diesiocho","diesinueve"};  //10
     string unidades[] = {"uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve" };     //10
-    string decenas[] = {"diez","veinte","treinta","cuarenta","cincuenta","sesenta","setenta","ochenta","noventa" };  //10
+    string decenas[] = {"veinte","treinta","cuarenta","cincuenta","sesenta","setenta","ochenta","noventa" };  //10
     string centenas[] = {"ciento","doscientos","trescientos","cuatrocientos","quinientos","seiscientos","setecientos","ochocientos","novecientos"}; //10
     
     if(numero == 0){
         return "cero";
     }
+    if(numero == 100){
+        return "cien";
+    }
     
     //casos mas de mil
     if(numero >= 10000){
         int mil = numero/1000;
-        //caso que hay exactamente entre 1000 a 1999 solo agregamos mil
+        //caso que hay exactamente entre 10000 a 19999 solo agregamos mil
         if(numero == 1 ){
             num_strin = num_strin + "mil ";
         } else {
@@ -36,7 +40,7 @@ string numero_string(int numero){
     //caso decenas
     if(numero >= 20){
         int aux = numero/10;
-        num_strin = num_strin + decenas[aux-1]+" ";
+        num_strin = num_strin + decenas[aux-2]+" ";
         numero = numero % 10;
     }
     //caso del 10 al 19
