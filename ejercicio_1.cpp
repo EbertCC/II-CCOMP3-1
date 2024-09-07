@@ -2,7 +2,7 @@
 
 using namespace std;
 
-string str_numero(int numero){
+string str_numero(int numero, int numero_aux){
 
     string num_str="";
 
@@ -23,7 +23,7 @@ string str_numero(int numero){
         if(aux == 1){
             num_str = num_str + "mil ";
         }else{
-            num_str = num_str + str_numero(aux)+" mil ";
+            num_str = num_str + str_numero(aux,numero)+" mil ";
         }
         numero = numero - aux*1000;
     }
@@ -38,11 +38,19 @@ string str_numero(int numero){
         return num_str;
     }
     if(numero>=20){
+        if(numero==21 && numero_aux>=21000){
+            num_str = num_str + "veintiun";
+            return num_str; 
+        }
         int aux = numero / 10;
         num_str = num_str + decenas[aux-2]+" ";
         numero = numero - aux*10;
     }
     if(numero>=1){
+        if(numero_aux>=21000 && numero==1){
+            num_str = num_str + "y un";
+            return num_str;
+        }
         num_str = num_str + unidades[numero-1];
     }
     return num_str;
@@ -54,16 +62,21 @@ string str_numero(int numero){
 int main(){
 
     int numero;
-
+/*
     cout<<"Ingrese numero entero del 0 al 999999 : "<<endl;
     cin>>numero;
-
+    
     while(numero < 0 || numero > 999999){
         cout<<"ingrese correctamente el numero del 0 al 999999 : "<<endl;
         cin>>numero;
     }
-
-    cout<<numero<<" < ------ > "<<str_numero(numero)<<endl;
+*/
+    for(int i = 0; i <10;i++){
+        cout<<"Ingrese numero entero del 0 al 999999 : "<<endl;
+        cin>>numero;
+        cout<<numero<<" < ------ > "<<str_numero(numero,0)<<endl;
+    }
+    //cout<<numero<<" < ------ > "<<str_numero(numero,0)<<endl;
 /*
     for(int i = 0; i<50 ; i++){
         int aux = rand()%1000000;
