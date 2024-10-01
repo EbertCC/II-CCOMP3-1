@@ -1,20 +1,16 @@
 #include <iostream>
 #include <cstring>
-#include <cctype> // Para usar la función tolower
+#include <cctype> 
 using namespace std;
 
-// Función para verificar si una cadena es un palíndromo (ignorando espacios y mayúsculas)
+
 bool esPalindromo(char *p) {
-    char *q = p; // Crear otro puntero que apunte al inicio
-    // Mover el puntero q al final de la cadena
+    char *q = p; 
     while (*q != '\0') {
         q++;
     }
-    q--; // Retrocedemos una posición ya que q apuntará al carácter nulo '\0'
-
-    // Comparar los caracteres desde el inicio y el final
+    q--; 
     while (p < q) {
-        // Ignorar espacios en blanco
         while (*p == ' ') {
             p++;
         }
@@ -22,18 +18,18 @@ bool esPalindromo(char *p) {
             q--;
         }
 
-        // Comparar caracteres ignorando mayúsculas/minúsculas
+        
         if (tolower(*p) != tolower(*q)) {
-            return false; // No es un palíndromo
+            return false; 
         }
-        p++; // Avanzar hacia adelante
-        q--; // Retroceder desde el final
+        p++;
+        q--; 
     }
-    return true; // Es un palíndromo
+    return true; 
 }
 
 int main() {
-    char cadena[] = "Anita lava la tina"; // Puedes cambiar esta cadena para probar otros casos
+    char cadena[] = "Anita lava la tina"; 
     if (esPalindromo(cadena)) {
         cout << "La cadena es un palíndromo." << endl;
     } else {
